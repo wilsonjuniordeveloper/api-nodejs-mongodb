@@ -10,4 +10,4 @@ app.use(bodyParser.urlencoded({extended: false}));
 require('./app/controllers/index')(app);
 
 
-app.listen(4000)
+app.listen(process.env.PORT || 3000)
