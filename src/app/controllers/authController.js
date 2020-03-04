@@ -80,12 +80,12 @@ router.post('/forgot_password', async (req, res) => {
         await User.findByIdAndUpdate(user.id, {
             '$set': {
                 passwordResetToken: token,
-            passwordResetExpires: now,
+                passwordResetExpires: now,
             }
             }, { new: true, useFindAndModify: false }
             );
-            
-            
+
+
         mailer.sendMail({
             to: email,
             from: 'outletnewoakley@gmail.com',
@@ -122,7 +122,7 @@ router.post('/reset_password', async (req, res) =>{
         return res.status(400).send({ error: "Token invalid, generate new one token" });
 
         user.password = password
-       
+
         await user.save();
 
         res.send();
